@@ -1,0 +1,111 @@
+
+<!--Fixed navigation bar and elements-->
+<div class="navbar-fixed center">
+    <nav>
+        <div class="nav-wrapper indigo lighten-1">
+            <a href="#!" class="brand-logo">NueSchool(LOGO)</a>
+            <ul class="right hide-on-med-and-down"> 
+   </nav>
+</div>
+
+<!--Search bar-->
+<div class="nav-wrapper">
+    <form class="search" align="right">
+        <div class="input-field">
+            <input id="search" type="search" required>
+            <label class="label-icon" for="search">
+                <i class="material-icons">search</i>
+            </label>
+            <i class="material-icons">close</i>
+        </div>
+    </form>
+</div>
+
+<!--Container for inline elements (video API and in-page nav menu)-->
+<div class="container">
+    <div class="row">
+        <div class="col s8">
+
+    <!--Video streaming API-->
+        <div id="twitch-embed"></div>
+
+        <!-- Load the Twitch embed script -->
+        <script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+        <!-- Create a Twitch.Embed object that will render within the "twitch-embed" root element. -->
+        <script type="text/javascript">
+          new Twitch.Embed("twitch-embed", {
+            width: 850,
+            height: 620,
+            channel: "dude_dudenstein",
+            layout: "video"
+
+          });
+        </script>
+    </div>
+    
+        <!--In-page nav menu-->
+        <div class="col s4">
+    
+    <!--Nav-menu tab-->
+    <div class="card-tabs">
+        <ul class="tabs tabs-fixed-width">
+            <li class="tab">
+                <a href="#slack">SLACK</a>
+            </li>
+            <li class="tab">
+                <a class="active" href="#github">GITHUB</a>
+            </li>
+            <li class="tab">
+                <a href="#linkedin">LINKEDIN</a>
+            </li>
+        </ul>
+    <!--We can add as many tabs as we need, so let's discuss which services we might like to connect-->
+    </div>
+
+    <!--Inner-menu content-->
+    <div class="card-content grey lighten-4">
+        <div id="slack">
+            <iframe src="https://www.giantbomb.com" height="550" width="400"></iframe>
+        </div>
+        <div id="github">
+            <iframe src="https://github.com/" height="550" width="400"></iframe>
+        </div>
+        <div id="linkedin">
+            <iframe src="https://www.linkedin.com" height="550" width="400"></iframe>
+        </div>
+    </div>
+</div>
+</div>
+
+
+    <!--Notes bar to be customized-->
+    <div class="container">
+    <div class="row">
+        <form class="notes-form">
+            <div class="form-group">  
+                <label for="user">Enter your notes and submit</label>
+                <input type="text" class="form-control input-lg" id="note-input" name="notes"></input>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+        <div class = 'row'>
+            <div class = 'col-md-12 notes-holder'>
+                <ul class="list-group">
+                    {{#each notes}}
+                    <li class="list-group-item">
+                         {{this.note}}
+                        <button type="submit" class="btn btn-danger edit" data-noteid="{{this.id}}">edit note</button>
+                 
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
